@@ -1,0 +1,19 @@
+{
+  "name": "adventofcode2017",
+  "version": "1.0.0",
+  "description": "Advent of Code 2017",
+  "main": "runner.js",
+  "scripts": {
+    "start": "node runner"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarkoKukovec/adventofcode2017.git"
+  },
+  "author": "Darko Kukovec",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DarkoKukovec/adventofcode2017/issues"
+  },
+  "homepage": "https://github.com/DarkoKukovec/adventofcode2017#readme"
+}

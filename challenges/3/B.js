@@ -1,10 +1,5 @@
-const surr = [
-  [-1, -1], [-1, 0], [-1, 1],
-  [0,  -1], [0,  0], [0,  1],
-  [1,  -1], [1,  0], [1,  1],
-];
-
-const getSurrounding = (map, [pX, pY]) => surr.map(([x, y]) => map[`${pX + x},${pY + y}`]).filter(Boolean);
+const SURR = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 0], [0, 1], [1, -1], [1, 0], [1, 1]];
+const getSurrounding = (map, pos) => SURR.map((diff) => map[pos.map((p, i) => p + diff[i])]).filter(Boolean);
 
 module.exports = (input) => {
   const map = {'0,0': 1, '1,0': 1, '1,1': 2};

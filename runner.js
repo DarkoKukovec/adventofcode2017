@@ -4,4 +4,6 @@ const task = process.argv[2] || getLatestTask();
 const input = loadData(task);
 
 runTask(task, 'A', input);
+runTask(task, 'A.min', input);
 runTask(task, 'B', input);
+runTask(task, 'B.min', input);

@@ -28,7 +28,10 @@ module.exports = {
     const taskPath = path.join(__dirname, 'challenges', taskNumber.toString(), `${variant}.js`);
     if (fs.existsSync(taskPath)) {
       const task = require(taskPath);
-      console.log(`Task ${taskNumber}${variant} result:`, task(input));
+      console.time(variant);
+      const res = task(input);
+      console.log(`Task ${taskNumber}${variant} result:`, res);
+      console.timeEnd(variant);
     }
   }
 };

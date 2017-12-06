@@ -5,3 +5,4 @@
 3. [Spiral Memory](3)
 4. [High-Entropy Passphrases](4)
 5. [A Maze of Twisty Trampolines, All Alike](5)
+6. [Memory Reallocation](6)

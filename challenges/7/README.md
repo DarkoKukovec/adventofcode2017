@@ -46,8 +46,6 @@ In this example, tknk is at the bottom of the tower (the bottom program), and is
 
 Before you're ready to help them, you need to make sure your information is correct. What is the name of the bottom program?
 
-Your puzzle answer was hlqnsbe.
-
 ## Part Two
 
 The programs explain the situation: they can't get down. Rather, they could get down, if they weren't expending all of their energy trying to keep the tower balanced. Apparently, one program has the wrong weight, and until it's fixed, they're stuck here.

@@ -8,3 +8,4 @@
 6. [Memory Reallocation](6)
 7. [Recursive Circus](7)
 8. [I Heard You Like Registers](8)
+9. [Stream Processing](9)

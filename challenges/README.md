@@ -14,4 +14,5 @@
 12. [Digital Plumber](12)
 13. [Packet Scanners](13)
 14. [Disk Defragmentation](14)
-15. [Dueling Generators] (15)
+15. [Dueling Generators](15)
+16. [Permutation Promenade](16)

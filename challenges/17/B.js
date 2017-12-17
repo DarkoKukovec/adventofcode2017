@@ -3,17 +3,16 @@ module.exports = (input) => {
   let position = 0;
   let memorySize = 1;
   let zeroPosition = 0;
-  let nextNumber = 0;
+  let nextNumber;
 
   for (let step = 1; step <= 50000000; step++) {
-    const nextPosition = (position + stepSize) % memorySize + 1;
+    position = (position + stepSize) % memorySize + 1;
     memorySize++;
-    if (nextPosition <= zeroPosition) {
+    if (position <= zeroPosition) {
       zeroPosition++;
-    } else if (nextPosition === zeroPosition + 1) {
+    } else if (position === zeroPosition + 1) {
       nextNumber = step;
     }
-    position = nextPosition;
   }
   return nextNumber;
 }

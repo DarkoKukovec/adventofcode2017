@@ -15,7 +15,6 @@ module.exports = (input) => {
 
     if ((A & 0xFFFF) === (B & 0xFFFF)) {
       equals++;
-      // console.log(equals, A, B);
     }
   }
 

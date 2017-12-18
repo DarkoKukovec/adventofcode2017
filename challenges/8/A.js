@@ -24,9 +24,9 @@ module.exports = (input) => {
       const [regA, dir, val, _, regB, comp, compVal] = line.split(/\s+/);
       return {
         regA,
-        val: parseInt(val, 10) * (dir === 'inc' ? +1 : -1),
+        val: ~~val * (dir === 'inc' ? +1 : -1),
         regB,
-        comp: (a) => COMPARATORS[comp](a, parseInt(compVal, 10)),
+        comp: (a) => COMPARATORS[comp](a, ~~compVal),
       };
     })
     .reduce((registers, {regA, val, regB, comp}) => {

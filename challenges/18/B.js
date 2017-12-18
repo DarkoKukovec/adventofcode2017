@@ -17,7 +17,6 @@ function* program(id, cmds, send) {
         continue;
       }
     } else if (cmd === 'snd') {
-      // console.log('send', id, getValue(register, X));
       send(id, getValue(register, X));
     } else if (cmd === 'set') {
       register[X] = getValue(register, Y);
@@ -29,7 +28,6 @@ function* program(id, cmds, send) {
       register[X] = getValue(register, X) % getValue(register, Y);
     } else if (cmd === 'rcv') {
       register[X] = yield id;
-      // console.log('receive', id, X, register[X]);
     }
     position++;
   }
@@ -45,18 +43,15 @@ module.exports = (input) => {
   const data = [[], []];
 
   function send(id, value) {
-    // console.log(id, value)
     data[id].push(value);
     if (id === 1) {
       result++;
-      if (result % 1000000 === 0) console.log(result, data[0].length, data[1].length)
     }
   }
 
   const prog0 = program(0, cmds, send);
   const prog1 = program(1, cmds, send);
 
-  // Start!
   let prog0res = prog0.next();
   let prog1res = prog1.next();
 

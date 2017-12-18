@@ -7,20 +7,9 @@ function getString(length) {
 }
 
 function reverseFirst(arr, num, pos) {
-  const alignedHash = [
-    ...arr.slice(pos),
-    ...arr.slice(0, pos),
-  ];
-
-  const reversedHash = [
-    ...alignedHash.slice(0, num).reverse(),
-    ...alignedHash.slice(num),
-  ];
-
-  return [
-    ...reversedHash.slice(-pos),
-    ...reversedHash.slice(0, -pos)
-  ];
+  const alignedHash = arr.slice(pos).concat(arr.slice(0, pos));
+  const reversedHash = alignedHash.slice(0, num).reverse().concat(alignedHash.slice(num));
+  return reversedHash.slice(-pos).concat(reversedHash.slice(0, -pos));
 }
 
 const HASH_SIZE = 256;
@@ -31,7 +20,6 @@ module.exports = (input) => {
   let skipSize = 0;
   let hashString = getString(HASH_SIZE);
   const lengths = input.split('').map((char) => char.charCodeAt(0)).concat(SUFFIX);
-
 
   for (let round = 0; round < 64; round++) {
     for (const length of lengths) {

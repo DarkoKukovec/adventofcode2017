@@ -17,7 +17,7 @@ module.exports = (input) => {
     rows.push(
       getHash(input + '-' + row)
         .split('')
-        .map((digit) => parseInt(digit, 16))
+        .map((digit) => ~~digit)
         .map((digit) => digit.toString(2).padStart(4, '0'))
         .join('')
         .split('')

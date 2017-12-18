@@ -5,7 +5,7 @@ module.exports = (input) => {
   for (let row = 0; row < 128; row++) {
     filled += getHash(input + '-' + row)
       .split('')
-      .map((digit) => parseInt(digit, 16))
+      .map((digit) => ~~digit)
       .map((digit) => digit.toString(2).padStart(4, '0'))
       .join('')
       .split('')

@@ -16,21 +16,24 @@ function isBalanced(weights) {
 }
 
 module.exports = (input) => {
+  const map = {};
   const unbalancedChildren = input
     .split('\n')
     .map((line) => {
       const [name, children] = line.split(' -> ');
       const weight = parseInt(name.split('(')[1].slice(0, -1), 10);
-      return {
+      const tower = {
         name: name.split(/\s+/).shift(),
         weight,
         children: children ? children.split(', ') : [],
         weightWithChildren: 0,
         correctWeight: true,
       };
+      map[tower.name] = tower;
+      return tower;
     })
     .map((tower, _index, towers) => {
-      tower.children = tower.children.map((name) => towers.find((item) => item.name === name));
+      tower.children = tower.children.map((name) => map[name]);
       if (tower.children.length === 0) {
         tower.weightWithChildren = tower.weight;
       }

@@ -17,3 +17,4 @@
 15. [Dueling Generators](15)
 16. [Permutation Promenade](16)
 17. [Spinlock](17)
+18. [Duet](18)

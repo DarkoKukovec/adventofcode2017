@@ -4,7 +4,7 @@ function* generator(input, factor, divisor, multiple) {
   while(true) {
     do {
       value = (value * factor) % divisor;
-    } while(value % multiple !== 0);
+    } while(value & multiple);
     yield value;
   }
 }
@@ -15,8 +15,8 @@ module.exports = (input) => {
     .map((line) => parseInt(line.split(' ').pop(), 10));
 
   const DIVISOR = 2147483647;
-  const A = generator(inputA, 16807, DIVISOR, 4);
-  const B = generator(inputB, 48271, DIVISOR, 8);
+  const A = generator(inputA, 16807, DIVISOR, 0x3);
+  const B = generator(inputB, 48271, DIVISOR, 0x7);
 
   const PAIRS = 5000000;
   let equals = 0;

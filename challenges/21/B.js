@@ -35,22 +35,27 @@ function combine(matrices) {
   const matrix = [];
   const perLine = Math.sqrt(matrices.length);
   const singleSize = matrices[0].length;
-  for (let x = 0; x < perLine; x++) {
-    const items = matrices.slice(x * perLine, x * perLine + perLine);
-    for (let index = 0; index < singleSize; index++) {
-      const line = items.reduce((arr, item) => arr.concat(item[index]), []);
-      matrix.push(line);
-    }
+  for (let lines = 0; lines < perLine * singleSize; lines++) {
+    matrix.push([]);
   }
+  matrices.forEach((item, index) => {
+    const rowStart = Math.floor(index / perLine) * singleSize;
+    const colStart = (index % perLine) * singleSize;
+    for (let row = 0; row < singleSize; row++) {
+      for (let col = 0; col < singleSize; col++) {
+        matrix[rowStart + row][colStart + col] = item[row][col];
+      }
+    }
+  });
   return matrix;
 }
 
 function rotate(matrix) {
   const rotated = [];
   const n = matrix.length;
-  for (i = 0; i < n; ++i) {
+  for (let i = 0; i < n; ++i) {
     rotated[i] = rotated[i] || [];
-    for (j = 0; j < n; ++j) {
+    for (let j = 0; j < n; ++j) {
       rotated[i][j] = matrix[n - j - 1][i];
     }
   }
@@ -68,41 +73,47 @@ function flip(matrix) {
   return flipped;
 }
 
-function getVariations(matrix) {
-  const variations = [
-    serialize(matrix),
-    serialize(flip(matrix)),
-  ];
+function* getVariations(matrix) {
+  yield serialize(matrix);
+  yield serialize(flip(matrix));
 
   let rotated = rotate(matrix);
-  variations.push(serialize(rotated));
-  variations.push(serialize(flip(rotated)));
+  yield serialize(rotated);
+  yield serialize(flip(rotated));
 
   rotated = rotate(rotated);
-  variations.push(serialize(rotated));
-  variations.push(serialize(flip(rotated)));
+  yield serialize(rotated);
+  yield serialize(flip(rotated));
 
   rotated = rotate(rotated);
-  variations.push(serialize(rotated));
-  variations.push(serialize(flip(rotated)));
-
-  return variations;
+  yield serialize(rotated);
+  yield serialize(flip(rotated));
 }
 
 function convert(matrix, rules) {
   const variations = getVariations(matrix);
-  const rule = rules.find((item) => variations.indexOf(item.input) !== -1);
-  return deserialize(rule.output);
+  let variation = variations.next();
+  const variationList = [];
+
+  while(!variation.done) {
+    if (rules[variation.value]) {
+      variationList.forEach((item) => {
+        rules[item] = rules[variation.value];
+      });
+      return rules[variation.value];
+    }
+    variationList.push(variation.value);
+    variation = variations.next();
+  }
 }
 
 module.exports = (input) => {
   let matrix = pattern;
-  const rules = input
-    .split('\n')
-    .map((line) => ({
-      input: line.split(' => ')[0],
-      output: line.split(' => ')[1],
-    }));
+  const rules = input.split('\n').reduce((r, line) => {
+    const [input, output] = line.split(' => ');
+    r[input] = deserialize(output);
+    return r;
+  }, {});
 
   for (let step = 0; step < 18; step++) {
     const matrices = split(matrix).map((item) => convert(item, rules));

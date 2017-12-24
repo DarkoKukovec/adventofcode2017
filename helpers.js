@@ -30,8 +30,8 @@ module.exports = {
       const task = require(taskPath);
       console.time(variant);
       const res = task(input);
-      console.log(`Task ${taskNumber}${variant} result:`, res);
       console.timeEnd(variant);
+      console.log(`Task ${taskNumber}${variant} result:`, res);
     }
   }
 };

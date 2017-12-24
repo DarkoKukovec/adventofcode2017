@@ -23,3 +23,4 @@
 21. [Fractal Art](21)
 22. [Sporifica Virus](22)
 23. [Coprocessor Conflagration](23)
+24. [Electromagnetic Moat](24)

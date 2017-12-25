@@ -39,8 +39,9 @@ Note: The minified version works for the given inputs. It's not meant to be a se
  22* |  712 |  847 |  1559
  23* |  908 |  345 |  1253
  24* | 1160 | 1358 |  2518
- ∑   |      |      | 33759
- Avg |      |      |  1406
+ 25* | 1596 |  N/A |  1596
+ ∑   |      |      | 35355
+ Avg |      |      |  1414
 
 `*` Not minified
 
@@ -72,7 +73,8 @@ Note: The minified version works for the given inputs. It's not meant to be a se
  22  |   22.79 | 2440.77 |  2463.56
  23  |    9.51 |    1.26 |    10.77
  24  | 1919.77 | 1677.92 |  3597.69
- ∑   |         |         | 18420.59
- Avg |         |         |   767.52
+ 25  | 2569.93 |     N/A |  2569.93
+ ∑   |         |         | 20990.52
+ Avg |         |         |   839.62
 
 `*` Middle one of three runs on 13-inch 2016 MacBook Pro with 2.4GHz Intel Core i7 using Node.js 9.3.0

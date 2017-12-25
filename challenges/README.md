@@ -24,3 +24,4 @@
 22. [Sporifica Virus](22)
 23. [Coprocessor Conflagration](23)
 24. [Electromagnetic Moat](24)
+25. [The Halting Problem](25)
